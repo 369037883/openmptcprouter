@@ -8,13 +8,10 @@ jobs:
   build:
     strategy:
       matrix:
-        OMR_TARGET: [x86_64]
-        OMR_KERNEL: [5.4]
+        OMR_TARGET: [bpi-r1, bpi-r2, bpi-r64, rpi2, rpi4, wrt32x, espressobin, r2s, rpi3, wrt3200acm, x86, x86_64, ubnt-erx, r4s, r7800, rutx, r5s]
+        OMR_KERNEL: [5.4, 5.15, 6.1]
     runs-on: ubuntu-latest
     continue-on-error: true
-     #SSH_ACTIONS: true
-     ssh_actions: true
-   
 
     steps:
     - name: Branch name
@@ -90,4 +87,6 @@ jobs:
       with:
         name: ${{ matrix.OMR_TARGET }}
         path: /home/runner/work/omr/${{ matrix.OMR_TARGET }}/${{ matrix.OMR_KERNEL }}/source/bin
- 
+
+
+
