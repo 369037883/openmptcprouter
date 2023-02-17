@@ -12,6 +12,7 @@ jobs:
         OMR_KERNEL: [5.4]
     runs-on: ubuntu-latest
     continue-on-error: true
+     SSH_ACTIONS: true
    
 
     steps:
