@@ -1,5 +1,7 @@
 name: openmptcprouter
 on: [push]
+permissions:
+  contents: write
 
 env:
   REPO_URL: 'https://github.com/ysurac/openmptcprouter'
