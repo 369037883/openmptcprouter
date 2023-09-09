@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         OMR_TARGET: [x86, x86_64]
-        OMR_KERNEL: [5.4]
+        OMR_KERNEL: [5.4,6.1]
     runs-on: ubuntu-latest
     continue-on-error: true
  
