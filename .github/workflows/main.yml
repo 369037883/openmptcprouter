@@ -1,7 +1,5 @@
 name: openmptcprouter
 on: [push]
-permissions:
-  contents: write
 
 env:
   REPO_URL: 'https://github.com/ysurac/openmptcprouter'
@@ -84,4 +82,8 @@ jobs:
         OMR_KERNEL: ${{ matrix.OMR_KERNEL }}
       run: |
         make IGNORE_ERRORS=m -C $OMR_TARGET/$OMR_KERNEL/source target/install -j$(nproc) || make IGNORE_ERRORS=m -C $OMR_TARGET/$OMR_KERNEL/source target/install -j1 V=s
-   
+    - name: Upload artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: ${{ matrix.OMR_TARGET }}
+        path: /home/runner/work/omr/${{ matrix.OMR_TARGET }}/${{ matrix.OMR_KERNEL }}/source/bin
