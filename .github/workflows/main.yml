@@ -8,7 +8,7 @@ jobs:
   build:
     strategy:
       matrix:
-        OMR_TARGET: [rpi3, x86, x86_64, r4s]
+        OMR_TARGET: [rpi3, x86, x86_64]
         OMR_KERNEL: [5.4, 6.1]
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -83,7 +83,7 @@ jobs:
       run: |
         make IGNORE_ERRORS=m -C $OMR_TARGET/$OMR_KERNEL/source target/install -j$(nproc) || make IGNORE_ERRORS=m -C $OMR_TARGET/$OMR_KERNEL/source target/install -j1 V=s
     - name: Upload artifacts
-      uses: 369037883@qq.com/ZGZ821107zgz@
+      uses: actions/upload-artifact@v3
       with:
         name: ${{ matrix.OMR_TARGET }}
         path: /home/runner/work/omr/${{ matrix.OMR_TARGET }}/${{ matrix.OMR_KERNEL }}/source/bin
